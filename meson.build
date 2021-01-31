@@ -101,9 +101,10 @@ wayland_client = dependency('wayland-client')
 drm = dependency('libdrm', version: '>=2.4.105')
 gbm = dependency('gbm', version: '>=17.1.0')
 libinput = dependency('libinput', version: '>=1.14.0')
-have_libinput_axis_v120 = cc.has_function('libinput_event_pointer_get_axis_value_v120',
-                                          dependencies: libinput)
-conf_data.set10('WLR_HAS_LIBINPUT_AXIS_V120', have_libinput_axis_v120)
+if cc.has_function('libinput_event_pointer_get_axis_value_v120', dependencies: libinput)
+	features += { 'libinput-axis-v120': true }
+endif
+
 xkbcommon = dependency('xkbcommon')
 udev = dependency('libudev')
 pixman = dependency('pixman-1')

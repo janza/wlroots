@@ -89,7 +89,6 @@ void handle_pointer_button(struct libinput_event *event,
 	wlr_signal_emit_safe(&wlr_dev->pointer->events.frame, wlr_dev->pointer);
 }
 
-#if !WLR_HAS_LIBINPUT_AXIS_V120
 void handle_pointer_axis_legacy(struct libinput_event *event,
 		struct libinput_device *libinput_dev) {
 	struct wlr_input_device *wlr_dev =
@@ -107,7 +106,7 @@ void handle_pointer_axis_legacy(struct libinput_event *event,
 	switch (libinput_event_pointer_get_axis_source(pevent)) {
 	case LIBINPUT_POINTER_AXIS_SOURCE_WHEEL:
 		wlr_event.source = WLR_AXIS_SOURCE_WHEEL;
-		break;
+		return;
 	case LIBINPUT_POINTER_AXIS_SOURCE_FINGER:
 		wlr_event.source = WLR_AXIS_SOURCE_FINGER;
 		break;
@@ -141,7 +140,6 @@ void handle_pointer_axis_legacy(struct libinput_event *event,
 	}
 	wlr_signal_emit_safe(&wlr_dev->pointer->events.frame, wlr_dev->pointer);
 }
-#endif
 
 
 void handle_pointer_axis(struct libinput_event *event,

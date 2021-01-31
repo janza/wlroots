@@ -192,8 +192,8 @@ static void pointer_handle_axis_discrete(void *data,
 
 static void pointer_handle_axis_v120(void *data,
 		struct wl_pointer *wl_pointer, uint32_t axis, int32_t v120) {
-	struct wlr_wl_backend *backend = data;
-	struct wlr_wl_pointer *pointer = backend->current_pointer;
+	struct wlr_wl_seat *seat = data;
+	struct wlr_wl_pointer *pointer = seat->active_pointer;
 	if (pointer == NULL) {
 		return;
 	}

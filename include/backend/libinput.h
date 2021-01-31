@@ -55,10 +55,8 @@ void handle_pointer_button(struct libinput_event *event,
 		struct libinput_device *device);
 void handle_pointer_axis(struct libinput_event *event,
 		struct libinput_device *device);
-#if !WLR_HAS_LIBINPUT_AXIS_V120
 void handle_pointer_axis_legacy(struct libinput_event *event,
 		struct libinput_device *device);
-#endif
 void handle_pointer_swipe_begin(struct libinput_event *event,
 		struct libinput_device *device);
 void handle_pointer_swipe_update(struct libinput_event *event,

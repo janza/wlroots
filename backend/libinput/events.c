@@ -259,9 +259,7 @@ void handle_libinput_event(struct wlr_libinput_backend *backend,
 		break;
 	case LIBINPUT_EVENT_POINTER_AXIS:
 		// Deprecated in libinput-next in favour of WHEEL/CONTINUOUS/FINGER
-#if !WLR_HAS_LIBINPUT_AXIS_V120
 		handle_pointer_axis_legacy(event, libinput_dev);
-#endif
 		break;
 #if WLR_HAS_LIBINPUT_AXIS_V120
 	case LIBINPUT_EVENT_POINTER_AXIS_WHEEL:
